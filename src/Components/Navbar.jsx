@@ -4,7 +4,7 @@ import { RxDropdownMenu } from "react-icons/rx";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSearch } from "react-icons/io";
-import Logo from '../../public/logo.png';
+import Logo from '../assets/logo.png';
 import { ShopContext } from '../Context/ShopContext';
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 
@@ -50,7 +50,7 @@ const Navbar = () => {
 				</ul>
 
 				<div className="flex items-center gap-6">
-					<IoMdSearch onClick={() => setShowSearch(prev => !prev)} className='w-6 h-6 cursor-pointer' />
+					<IoMdSearch onClick={() => setShowSearch(prev => !prev)} className='w-7 h-7 cursor-pointer' />
 					{console.log(showSearch)}
 					<div className="group relative">
 						{/* <Link to={'/login'}><CgProfile className='w-6 h-6 cursor-pointer' alt="" /></Link>
@@ -69,7 +69,7 @@ const Navbar = () => {
 					</div>
 					{user &&
 						<Link to='/cart' className='relative'>
-							<FaCartPlus className='w-5 min-w-5' />
+							<FaCartPlus className='w-6 h-6 min-w-5' />
 							<p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
 						</Link>}
 					<RxDropdownMenu onClick={()=>setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
