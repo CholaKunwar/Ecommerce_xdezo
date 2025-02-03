@@ -1,50 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom'; // Corrected import
+import { Link, useSearchParams } from 'react-router-dom';
 
 const PaymentSuccess = () => {
 	const [search] = useSearchParams();
 	const dataQuery = search.get('data');
-	const [data, setData] = useState(null); // Initialize data as null
+	const [data, setData] = useState(null);
 
 	useEffect(() => {
 		if (dataQuery) {
 			try {
-				// Decode the Base64 string
 				const resData = atob(dataQuery);
-				// Parse the JSON string into an object
 				const resObject = JSON.parse(resData);
-				console.log(resObject);
 				setData(resObject);
 			} catch (error) {
 				console.error('Error decoding or parsing data:', error);
-				setData(null); // Set data to null in case of error
+				setData(null);
 			}
 		} else {
-			console.log('No data found in the URL');
-			setData(null); // Set data to null if no data is found
+			setData(null);
 		}
-	}, [dataQuery]); // Run effect when dataQuery changes
+	}, [dataQuery]);
 
 	const bgImg = {
 		backgroundImage: 'url(https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png)',
-		height: '45vh', // Full viewport height
-		width: '45vw', // Full viewport width
-		backgroundSize: 'contain', // Ensure the image fills the container
-		backgroundPosition: 'center', // Center the image
-		backgroundRepeat: 'no-repeat', // Prevent tiling
+		height: '200px',
+		width: '200px',
+		backgroundSize: 'contain',
+		backgroundPosition: 'center',
+		backgroundRepeat: 'no-repeat',
+		animation: 'fadeIn 2s ease-in-out',
 	};
 
 	return (
-		<div className='container h-[50vh] mt-20 w-[100vw] flex flex-col justify-center items-center'>
-			<div style={bgImg}></div>
-			{data ? (
-				<p className='text-lime-600 text-2xl font-semibold mt-4'>Rs. {data.total_amount}.00</p>
-			) : (
-				<p className='text-lime-600 text-2xl font-semibold mt-4'>Payment Successful!</p>
-			)}
-			<Link to={'/'}>
-				<button className='bg-lime-600 py-2 px-24 text-2xl mt-4 text-white shadow-lg font-semibold'>Done</button>
-			</Link>
+		<div className="container h-[80vh] w-full flex flex-col justify-center items-center -mb-24">
+			<div className="flex flex-col items-center p-8 rounded-xl">
+				<div style={bgImg}></div>
+				<h2 className="text-3xl font-bold text-blue-600 mt-6">Payment {data ? 'Details' : 'Successful'}!</h2>
+
+				{data ? (
+					<p className="text-xl text-green-600 font-semibold mt-4">Amount Paid: Rs. {data.total_amount}.00</p>
+				) : (
+					<p className="text-xl text-green-600 font-semibold mt-4">Your payment was successfully processed!</p>
+				)}
+
+				<Link to="/">
+					<button className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white py-3 px-16 mt-6 rounded-lg shadow-lg text-xl hover:scale-105 transition-transform ease-in-out duration-300">
+						Done
+					</button>
+				</Link>
+			</div>
 		</div>
 	);
 };

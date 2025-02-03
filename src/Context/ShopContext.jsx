@@ -58,7 +58,7 @@ const ShopContextProvider = (props) => {
 			cartData[itemId][size] = 1;
 		}
 		setCartItems(cartData);
-		toast(<div className="text-center">
+		toast(<div className="text-center bg-gray-50">
 			<svg
 				className="mx-auto mb-1 text-green-500 w-14 h-12 ps-5"
 				aria-hidden="true"

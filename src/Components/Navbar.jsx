@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RxDropdownMenu } from "react-icons/rx";
 import { FaCartPlus } from "react-icons/fa";
@@ -8,88 +8,71 @@ import Logo from '../assets/logo.png';
 import { ShopContext } from '../Context/ShopContext';
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 
-
 const Navbar = () => {
 	const [visible, setVisible] = useState(false);
 	const { showSearch, setShowSearch, getCartCount } = useContext(ShopContext);
-	
-	// clerk code: 
 	const { openSignIn } = useClerk();
 	const { user } = useUser();
 
 	return (
 		<>
-			<div className='w-full py-3 bg-rose-200'></div>
-			<div className='flex items-center justify-between py-3 font-medium px-14 shadow-md '>
+			{/* Top Bar */}
+			<div className='w-full py-2 bg-gradient-to-r from-rose-400 via-rose-500 to-rose-300'></div>
+
+			{/* Navbar */}
+			<div className='flex items-center justify-between py-4 px-10 shadow-md bg-gray-50 rounded-b-xl'>
+				{/* Logo */}
 				<Link to='/'>
-					<div className='flex items-center'>
-						<img src={Logo} alt="" className='w-12 h-10 object-cover rounded-2xl' />
-						<h1 className='text-4xl font-semibold'>Ch<span className='text-lime-800'>ola</span></h1>
+					<div className='flex items-center gap-2'>
+						<img src={Logo} alt="Logo" className='w-14 h-12 object-cover rounded-xl transform hover:scale-110 transition-all' />
+						<h1 className='text-4xl font-bold text-gray-900'>Ch<span className='text-rose-600'>ola</span></h1>
 					</div>
 				</Link>
-				<ul className='hidden sm:flex gap-5 text-sm text-gray-800'>
-					<NavLink to='/' className='flex flex-col items-center gap-1'>
-						<p>HOME</p>
-						<hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-					</NavLink>
 
-					<NavLink to='/collection' className='flex flex-col items-center gap-1'>
-						<p>COLLECTION</p>
-						<hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-					</NavLink>
-
-					<NavLink to='/about' className='flex flex-col items-center gap-1'>
-						<p>ABOUT</p>
-						<hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-					</NavLink>
-
-					<NavLink to='/contact' className='flex flex-col items-center gap-1'>
-						<p>CONTACT</p>
-						<hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
-					</NavLink>
+				{/* Nav Links */}
+				<ul className='hidden sm:flex gap-8 text-lg font-medium text-gray-800'>
+					<NavLink to='/' className='hover:text-rose-600 transition-all'>HOME</NavLink>
+					<NavLink to='/collection' className='hover:text-rose-600 transition-all'>COLLECTION</NavLink>
+					<NavLink to='/about' className='hover:text-rose-600 transition-all'>ABOUT</NavLink>
+					<NavLink to='/contact' className='hover:text-rose-600 transition-all'>CONTACT</NavLink>
 				</ul>
 
+				{/* Icons */}
 				<div className="flex items-center gap-6">
-					<IoMdSearch onClick={() => setShowSearch(prev => !prev)} className='w-7 h-7 cursor-pointer' />
-					{console.log(showSearch)}
+					<IoMdSearch onClick={() => setShowSearch(prev => !prev)} className='w-7 h-7 cursor-pointer hover:text-rose-600 transition-all' />
 					<div className="group relative">
-						{/* <Link to={'/login'}><CgProfile className='w-6 h-6 cursor-pointer' alt="" /></Link>
-						<div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'> */}
-							
-							{/* whenever we are signin we need to hide this btn and display user profile icon */}
-							{user ? <UserButton /> :
-							<button onClick={() => openSignIn()} className=' place-items-center cursor-pointer'><CgProfile className='w-6 h-6 place-items-center' /></button>
-							}
-							{/* <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-600">
-								<p className='cursor-pointer hover:text-black'>My profile</p>
-								<p className='cursor-pointer hover:text-black'>Orders</p>
-								<p className='cursor-pointer hover:text-black'>Logout</p>
-							</div> */}
-						{/* </div> */}
+						{user ? <UserButton /> :
+							<button onClick={() => openSignIn()} className='p-2 cursor-pointer hover:bg-gray-200 rounded-full transition-all'>
+								<CgProfile className='w-6 h-6' />
+							</button>}
 					</div>
 					{user &&
 						<Link to='/cart' className='relative'>
-							<FaCartPlus className='w-6 h-6 min-w-5' />
-							<p className='absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>{getCartCount()}</p>
-						</Link>}
-					<RxDropdownMenu onClick={()=>setVisible(true)} className='w-5 cursor-pointer sm:hidden' />
+							<FaCartPlus className='w-7 h-7 hover:text-rose-600 transition-all' />
+							<p className='absolute right-[-5px] bottom-[-5px] w-5 text-center leading-5 bg-rose-500 text-white aspect-square rounded-full text-xs'>
+								{getCartCount()}
+							</p>
+						</Link>
+					}
+					<RxDropdownMenu onClick={() => setVisible(true)} className='w-7 h-7 cursor-pointer sm:hidden hover:text-rose-600' />
 				</div>
+			</div>
 
-				{/* Sidebar menu for small screens */}
-				<div className={`absolute top-0 right-0 h-screen z-10 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
-					<div className='flex flex-col text-gray-600'>
-						<div onClick={()=>{setVisible(false)}} className="flex items-center gap-4 p-3 cursor-pointer">
-							<RxDropdownMenu className='h-4 rotate-180' />
-						</div>
-						<NavLink className='py-2 pl-6 border border-gray-200' to='/' onClick={() => { setVisible(false) }} >HOME</NavLink>
-						<NavLink className='py-3 pl-6 border border-gray-100' to='/collection' onClick={() => { setVisible(false) }} >COLLECTION</NavLink>
-						<NavLink className='py-3 pl-6 border border-gray-100' to='/about' onClick={() => { setVisible(false) }} >ABOUT</NavLink>
-						<NavLink className='py-3 pl-6 border border-gray-200' to='/contact' onClick={() => { setVisible(false) }} >CONTACT</NavLink>
+			{/* Sidebar menu for small screens */}
+			<div className={`fixed top-0 right-0 h-full z-20 bg-opacity-70 bg-black transition-all duration-300 ${visible ? 'w-full' : 'w-0'}`}>
+				<div className='flex flex-col bg-white w-3/4 h-full shadow-lg'>
+					<div onClick={() => setVisible(false)} className="flex items-center gap-4 p-4 cursor-pointer text-gray-600 hover:text-rose-600 transition-all">
+						<RxDropdownMenu className='h-6 rotate-180' />
+						<span className='text-lg font-medium'>Close</span>
 					</div>
+					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/' onClick={() => { setVisible(false) }}>HOME</NavLink>
+					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/collection' onClick={() => { setVisible(false) }}>COLLECTION</NavLink>
+					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/about' onClick={() => { setVisible(false) }}>ABOUT</NavLink>
+					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/contact' onClick={() => { setVisible(false) }}>CONTACT</NavLink>
 				</div>
 			</div>
 		</>
 	)
 }
 
-export default Navbar
+export default Navbar;

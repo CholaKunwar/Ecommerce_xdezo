@@ -11,11 +11,11 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import Product from './pages/product';
 import PlaceOrder from './pages/PlaceOrder';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFailure from './pages/PaymentFailure';
 import { useUser } from '@clerk/clerk-react';
+import Product from './pages/Product';
 
 const App = () => {
   const { user } = useUser();
