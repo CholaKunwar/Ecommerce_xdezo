@@ -18,6 +18,26 @@ const ShopContextProvider = (props) => {
 	const { user } = useUser();
 
 
+	// Load cart data from local storage on mount
+	useEffect(() => {
+		const savedCart = localStorage.getItem("cart");
+		if (savedCart) {
+			setCartItems(JSON.parse(savedCart));
+		}
+	}, []);
+
+	// Save cart data to local storage whenever cartItems change
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(cartItems));
+	}, [cartItems]);
+
+	// Function to clear the cart after payment
+	const clearCart = () => {
+		setCartItems({}); // Reset cart state
+		localStorage.removeItem("cart"); // Remove cart from localStorage
+		toast.success("Payment Successful! Your cart has been cleared.");
+	};
+
 	const addToCart = async (itemId, size) => {
 		let cartData = structuredClone(cartItems);
 		if(!user) {
@@ -136,7 +156,7 @@ const ShopContextProvider = (props) => {
 		return totalAmount;
 	}
 	const value = {
-		products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount, updateQuantity, getCartAmount, navigate
+		products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount, updateQuantity, getCartAmount, navigate,clearCart
 	}
 
 	return (

@@ -20,12 +20,12 @@ const Navbar = () => {
 			<div className='w-full py-2 bg-gradient-to-r from-rose-400 via-rose-500 to-rose-300'></div>
 
 			{/* Navbar */}
-			<div className='flex items-center justify-between py-4 px-10 shadow-md bg-gray-50 rounded-b-xl'>
+			<div className='flex items-center justify-between py-4 px-3 md:px-10 shadow-md bg-gray-50 rounded-b-xl'>
 				{/* Logo */}
 				<Link to='/'>
 					<div className='flex items-center gap-2'>
-						<img src={Logo} alt="Logo" className='w-14 h-12 object-cover rounded-xl transform hover:scale-110 transition-all' />
-						<h1 className='text-4xl font-bold text-gray-900'>Ch<span className='text-rose-600'>ola</span></h1>
+						<img src={Logo} alt="Logo" className='h-8 w-8 md:w-14 md:h-12 object-cover rounded-xl transform hover:scale-110 transition-all' />
+						<h1 className='text-2xl md:text-4xl font-bold text-gray-900'>Ch<span className='text-rose-600'>ola</span></h1>
 					</div>
 				</Link>
 
