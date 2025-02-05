@@ -18,7 +18,7 @@ const PlaceOrder = () => {
 		product_service_charge: "0",
 		product_delivery_charge: "0",
 		product_code: "EPAYTEST",
-		success_url: "https://rc-epay.esewa.com.np/success",
+		success_url: "https://ecommerce-xdezo.vercel.app/paymentsuccess",
 		failure_url: "https://ecommerce-xdezo.vercel.app/paymentfailure",
 		signed_field_names: "total_amount,transaction_uuid,product_code",
 		signature: "",
@@ -147,7 +147,7 @@ const PlaceOrder = () => {
 							<button type="submit" className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md transition-all ease-in-out duration-300">Proceed to Checkout</button>
 						</form>
 						:
-						<Link to={'/paymentSuccess'}>
+						<Link to={'/paymentsuccess'}>
 							<button type="submit" onClick={handleProceedToCheckout} className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md transition-all ease-in-out duration-300">Proceed to Checkout</button>
 						</Link>
 					}
