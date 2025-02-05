@@ -14,7 +14,7 @@ const LatestCollection = () => {
 		<div className='pt-12 pb-18 px-6 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
 			<div className="text-center py-8">
 				<h1 className='text-4xl font-bold text-gray-700 uppercase tracking-wide'>
-					<span className='text-gray-500'>__LATEST</span> Collections__
+					<span className='text-gray-500'>LATEST</span> Collections
 				</h1>
 				<p className='w-3/4 m-auto text-sm sm:text-base md:text-lg text-gray-600 mt-4'>
 					Discover the latest trends and must-have styles in our newest collection.

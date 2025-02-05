@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../Context/ShopContext";
-import { Link } from "react-router-dom";
 import ProductItems from "./ProductItems";
 
 const RelatedProduct = ({ category, subCategory }) => {
@@ -25,7 +24,7 @@ const RelatedProduct = ({ category, subCategory }) => {
 					<h2 className="text-2xl font-bold mb-6">Related Products</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 						{related.map((item,index) => (						
-								<ProductItems key={index} id={item._id} image={item.image} name={item.name} price={item.price}></ProductItems>
+								<ProductItems key={index} id={item._id} image={item.image} name={item.name} price={item.price} ></ProductItems>
 						))}
 					</div>
 				</div>
