@@ -70,6 +70,7 @@ const PlaceOrder = () => {
 		if (!firstName || !lastName || !email || !street || !city || !state || !zipcode || !country || !phone) {
 			e.preventDefault(); // Prevent form submission
 			setError("Please fill in all delivery information before proceeding to checkout.");
+			scrollTo(0, 0);
 			return;
 		} else {
 			setError(""); // Clear any existing error message
