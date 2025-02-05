@@ -24,7 +24,7 @@ const Hero = () => {
 				</div>
 
 				{/* Hero Right Side */}
-				<div className="w-full sm:w-1/2 sm:h-[450px] overflow-hidden">
+				<div className="w-full sm:w-1/2 xs:h-[450px] overflow-hidden">
 					<img
 						className="xs:w-[450px] xs:h-[450px] lg:w-full lg:h-full object-cover transform hover:scale-105 transition-transform duration-500"
 						src='https://img.freepik.com/free-photo/excited-funny-woman-shopaholic-holding-hangers-with-summer-clothes-try-demonstrating-smartphone_273609-741.jpg'
