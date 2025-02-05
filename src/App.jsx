@@ -33,8 +33,8 @@ const App = () => {
           <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
         {user && <Route path='place-order' element={<PlaceOrder />} />}
-        {user && <Route path='/paymentsuccess' element={<PaymentSuccess />} />}
-        {user && <Route path='/paymentfailure' element={<PaymentFailure />} />}
+        <Route path='/paymentsuccess' element={<PaymentSuccess />} />
+        <Route path='/paymentfailure' element={<PaymentFailure />} />
       </Routes>
       <Footer/>
     </div>
