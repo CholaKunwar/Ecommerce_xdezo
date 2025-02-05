@@ -4,7 +4,7 @@ import { MdCancel } from 'react-icons/md';
 
 const PaymentFailure = () => {
 	return (
-		<div className="container h-[70vh] w-full flex flex-col ms-24 justify-center items-center -mb-24">
+		<div className="container h-[70vh] w-full flex flex-col lg:ms-24 justify-center items-center -mb-24">
 			<div className="flex flex-col items-center p-8">
 				<MdCancel className="text-red-600 text-9xl animate-bounce" />
 				<p className="text-red-600 text-3xl font-bold mt-6 tracking-wide">Payment Failed!</p>
