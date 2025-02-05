@@ -34,7 +34,7 @@ const PaymentSuccess = () => {
 	};
 
 	return (
-		<div className="container h-[80vh] w-full flex flex-col justify-center items-center -mb-24">
+		<div className="container h-[80vh] w-full ms-24 flex flex-col justify-center items-center -mb-24">
 			<div className="flex flex-col items-center p-8 rounded-xl">
 				<div style={bgImg}></div>
 				<h2 className="text-3xl font-bold text-blue-600 mt-6">Payment {data ? 'Details' : 'Successful'}!</h2>
