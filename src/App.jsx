@@ -16,11 +16,14 @@ import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFailure from './pages/PaymentFailure';
 import { useUser } from '@clerk/clerk-react';
 import Product from './pages/Product';
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   const { user } = useUser();
   return (
     <div className='bg-gray-50 min-h-screen'>
+      {/* Include Vercel Analytics component */}
+      <Analytics />
       <ToastContainer />
       <Navbar />
       <SearchBar />
