@@ -1,18 +1,28 @@
-import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RxDropdownMenu } from "react-icons/rx";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSearch } from "react-icons/io";
 import Logo from '../assets/logo.png';
 import { ShopContext } from '../Context/ShopContext';
-import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { useAuth, useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { toast } from 'react-toastify';
+
 
 const Navbar = () => {
 	const [visible, setVisible] = useState(false);
 	const { showSearch, setShowSearch, getCartCount } = useContext(ShopContext);
 	const { openSignIn } = useClerk();
 	const { user } = useUser();
+	// const { signOut } = useClerk();
+	// const { isSignedIn } = useAuth();
+
+	// useEffect(() => {
+	// 	if (!isSignedIn) {
+	// 		toast.success("Logged out successfully!");
+	// 	}
+	// }, [isSignedIn]);
 
 	return (
 		<>

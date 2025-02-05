@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { products } from "../assets/assets";
 import { useUser } from "@clerk/clerk-react";
-import { FaExclamationCircle, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+
 
 export const ShopContext = createContext();
 
@@ -16,7 +17,6 @@ const ShopContextProvider = (props) => {
 	const [cartItems, setCartItems] = useState({});
 	const navigate = useNavigate();
 	const { user } = useUser();
-
 
 	// Load cart data from local storage on mount
 	useEffect(() => {

@@ -129,7 +129,7 @@ const Collection = () => {
 				{/* Right Side */}
 				<div className='flex-1'>
 					<div className='flex justify-between text-base sm:text-2xl mb-4 pb-4'>
-						<h1 className='text-gray-400 text-3xl font-semibold'>
+						<h1 className='text-gray-400 xs:text-lg md:text-3xl font-semibold'>
 							All <span className='text-gray-800 ps-2'>COLLECTIONS_</span>
 						</h1>
 
