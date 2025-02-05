@@ -80,7 +80,6 @@ const Product = () => {
 				<div className="mt-20">
 					<div className="flex border-b">
 						<p className="border-gray-300 px-5 py-3 text-sm font-medium cursor-pointer hover:text-gray-800">Description</p>
-						<p className='border-gray-300 px-5 py-3 text-sm font-medium cursor-pointer hover:text-gray-800'>Reviews (122)</p>
 					</div>
 					<div className="flex flex-col gap-4 py-6 text-sm text-gray-600">
 						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, numquam!</p>
