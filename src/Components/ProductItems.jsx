@@ -15,7 +15,7 @@ const ProductItems = ({ id, image, name, price }) => {
 
 					<span className=" text-sm font-bold text-gray-700 dark:text-white">{currency} {price}</span>
 					<Link to={`/product/${id}`}>
-						<button className="block place-self-center mt-1 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg">
+						<button className="block place-self-center mt-1 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg" onClick={() => scrollTo(0, 0)}> 
 							Quick View
 						</button>
 					</Link>
