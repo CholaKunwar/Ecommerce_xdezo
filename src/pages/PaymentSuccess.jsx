@@ -40,7 +40,7 @@ const PaymentSuccess = () => {
 				<h2 className="text-3xl font-bold text-blue-600 mt-6">Payment {data ? 'Details' : 'Successful'}!</h2>
 
 				{data ? (
-					<p className="text-xl text-green-600 font-semibold mt-4">Amount Paid: Rs. {data.total_amount}.00</p>
+					<p className="text-xl text-green-600 font-semibold mt-4">Amount Paid: Rs. {data.total_amount}</p>
 				) : (
 					<p className="text-xl text-green-600 font-semibold mt-4">Your payment was successfully processed!</p>
 				)}
