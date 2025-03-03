@@ -45,6 +45,9 @@ const Navbar = () => {
 					<NavLink to='/collection' className='hover:text-rose-600 transition-all'>COLLECTION</NavLink>
 					<NavLink to='/about' className='hover:text-rose-600 transition-all'>ABOUT</NavLink>
 					<NavLink to='/contact' className='hover:text-rose-600 transition-all'>CONTACT</NavLink>
+					{user &&
+						<NavLink to='/order' className='hover:text-rose-600 transition-all uppercase'>Order</NavLink>
+					}
 				</ul>
 
 				{/* Icons */}
@@ -79,6 +82,9 @@ const Navbar = () => {
 					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/collection' onClick={() => { setVisible(false) }}>COLLECTION</NavLink>
 					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/about' onClick={() => { setVisible(false) }}>ABOUT</NavLink>
 					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/contact' onClick={() => { setVisible(false) }}>CONTACT</NavLink>
+					{user &&
+						<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/contact' onClick={() => { setVisible(false) }}>ORDERS</NavLink>
+					}
 				</div>
 			</div>
 		</>
