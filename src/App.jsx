@@ -17,6 +17,7 @@ import PaymentFailure from './pages/PaymentFailure';
 import { useUser } from '@clerk/clerk-react';
 import Product from './pages/Product';
 import { Analytics } from "@vercel/analytics/react"
+import Order from './pages/Order';
 
 const App = () => {
   const { user } = useUser();
@@ -28,7 +29,8 @@ const App = () => {
       <Navbar />
       <SearchBar />
       <Routes>
-        <Route path='/' element={<Home />} />       
+        <Route path='/' element={<Home />} />  
+        <Route path='/order' element={<Order/>} />
         <Route path='/collection' element={<Collection />} />
         {user && <Route path='/cart' element={<Cart />} />}  
         <Route path='/contact' element={<Contact />} />

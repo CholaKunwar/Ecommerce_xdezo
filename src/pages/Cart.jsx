@@ -9,6 +9,8 @@ const Cart = () => {
 	const { products, currency, cartItems, updateQuantity, navigate } = useContext(ShopContext);
 	const [cartData, setCartData] = useState([]);
 
+
+
 	useEffect(() => {
 		const tempData = [];
 		for (const items in cartItems) {
@@ -93,7 +95,7 @@ const Cart = () => {
 						<CartTotal />
 						<div className='w-full text-end'>
 							<button
-								onClick={() => navigate('/place-order')}
+								onClick={()=>navigate('/place-order')}
 								className={`bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm my-8 px-8 py-3 rounded-md hover:scale-105 transform transition-all duration-200 ${isCartEmpty ? 'opacity-50 cursor-not-allowed' : ''}`}
 								disabled={isCartEmpty}
 							>

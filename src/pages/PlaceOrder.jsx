@@ -7,7 +7,55 @@ import { Link } from 'react-router-dom';
 
 const PlaceOrder = () => {
 	const [method, setMethod] = useState('cod');
-	const { navigate, getCartAmount, delivery_fee } = useContext(ShopContext);
+	const { products, navigate, getCartAmount, cartItems, delivery_fee } = useContext(ShopContext);
+	const [cartData, setCartData] = useState([]);
+	
+		useEffect(() => {
+			const tempData = [];
+			for (const items in cartItems) {
+				for (const item in cartItems[items]) {
+					if (cartItems[items][item] > 0) {
+						tempData.push({
+							_id: items,
+							size: item,
+							quantity: cartItems[items][item],
+						});
+					}
+				}
+			}
+			setCartData(tempData);
+		}, [cartItems]);	
+
+	const proceedToCheckout = () => {
+		// Initialize productDetails from localStorage or empty array
+		let productDetails = JSON.parse(localStorage.getItem('productDetails')) || [];
+
+		// Get the highest existing ID or start at 0
+		let maxId = productDetails.length > 0
+			? Math.max(...productDetails.map(item => item.id || 0))
+			: 0;
+
+		// Loop through the cartData and store product details with incrementing IDs
+		cartData.map((item) => {
+			const productData = products.find((product) => product._id === item._id);
+
+			// Only add product details if productData is found
+			if (productData) {
+				maxId++; // Increment the ID for each new item
+				productDetails.push({
+					id: maxId, // Add the incrementing ID
+					productId: productData._id,
+					quantity: item.quantity,
+					size: item.size,
+					paymentMethod: method
+				});
+			}
+		});
+
+		// Store the updated product details array in localStorage
+		localStorage.setItem('productDetails', JSON.stringify(productDetails));
+	};
+	
 
 	let grandTotal = getCartAmount() + delivery_fee;
 	let [formData, setFormData] = useState({
@@ -73,7 +121,7 @@ const PlaceOrder = () => {
 			scrollTo(0, 0);
 			return;
 		} else {
-			setError(""); // Clear any existing error message
+			proceedToCheckout();
 		}
 	};
 
