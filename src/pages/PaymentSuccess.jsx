@@ -47,7 +47,7 @@ const PaymentSuccess = () => {
 				)}
 
 				
-				<button onClick={() => { clearCart(); navigate('/order'); }} className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white py-3 px-16 mt-6 rounded-lg shadow-lg text-xl hover:scale-105 transition-transform ease-in-out duration-300">
+				<button onClick={() => { clearCart(); navigate('/order2'); }} className="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-white py-3 px-16 mt-6 rounded-lg shadow-lg text-xl hover:scale-105 transition-transform ease-in-out duration-300">
 						Go to Order Page
 					</button>
 			</div>

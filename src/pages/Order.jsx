@@ -8,7 +8,7 @@ const Order = () => {
 	const [cartData, setCartData] = useState([]);
 
 	// Retrieve product details from localStorage
-	const storedProductDetails = JSON.parse(localStorage.getItem('productDetails')) || [];
+	const storedProductDetails = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
 
 	useEffect(() => {
 		const tempData = [];
@@ -125,6 +125,7 @@ const Order = () => {
 								<tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 									<td className="px-4 py-4">
 										<div className="flex items-center gap-4">
+											
 											<img
 												src={productData.image[0]} // Assuming the product image array exists
 												className="w-16 sm:w-20 h-16 sm:h-20 rounded-md object-cover shadow"

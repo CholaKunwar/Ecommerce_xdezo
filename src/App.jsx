@@ -18,6 +18,7 @@ import { useUser } from '@clerk/clerk-react';
 import Product from './pages/Product';
 import { Analytics } from "@vercel/analytics/react"
 import Order from './pages/Order';
+import Order2 from './pages/Order2';
 
 const App = () => {
   const { user } = useUser();
@@ -30,7 +31,8 @@ const App = () => {
       <SearchBar />
       <Routes>
         <Route path='/' element={<Home />} />  
-        <Route path='/order' element={<Order/>} />
+        <Route path='/order' element={<Order />} />
+        <Route path='/order2' element={<Order2 />} />
         <Route path='/collection' element={<Collection />} />
         {user && <Route path='/cart' element={<Cart />} />}  
         <Route path='/contact' element={<Contact />} />

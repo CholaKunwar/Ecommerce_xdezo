@@ -27,34 +27,36 @@ const PlaceOrder = () => {
 		}, [cartItems]);	
 
 	const proceedToCheckout = () => {
-		// Initialize productDetails from localStorage or empty array
-		let productDetails = JSON.parse(localStorage.getItem('productDetails')) || [];
+		// Retrieve existing purchase history from localStorage or initialize an empty array
+		let purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
 
-		// Get the highest existing ID or start at 0
-		let maxId = productDetails.length > 0
-			? Math.max(...productDetails.map(item => item.id || 0))
-			: 0;
+		// Create a new purchase object with all necessary details
+		const newPurchase = {
+			id: uuidv4(), // Unique ID for the purchase
+			date: new Date().toISOString(), // Timestamp of purchase
+			paymentMethod: method,
+			totalAmount: grandTotal,
+			deliveryInfo: { ...deliveryInfo }, // Store delivery details
+			items: cartData.map((item) => {
+				const productData = products.find((product) => product._id === item._id);
+				return productData
+					? {
+						productId: productData._id,
+						name: productData.name, // Include product name for reference
+						quantity: item.quantity,
+						size: item.size,
+					}
+					: null;
+			}).filter(Boolean) // Remove any null values
+		};
 
-		// Loop through the cartData and store product details with incrementing IDs
-		cartData.map((item) => {
-			const productData = products.find((product) => product._id === item._id);
+		// Add new purchase object to the history
+		purchaseHistory.push(newPurchase);
 
-			// Only add product details if productData is found
-			if (productData) {
-				maxId++; // Increment the ID for each new item
-				productDetails.push({
-					id: maxId, // Add the incrementing ID
-					productId: productData._id,
-					quantity: item.quantity,
-					size: item.size,
-					paymentMethod: method
-				});
-			}
-		});
-
-		// Store the updated product details array in localStorage
-		localStorage.setItem('productDetails', JSON.stringify(productDetails));
+		// Store the updated purchase history in localStorage
+		localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
 	};
+
 	
 
 	let grandTotal = getCartAmount() + delivery_fee;
