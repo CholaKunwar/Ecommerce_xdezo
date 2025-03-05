@@ -43,16 +43,10 @@ const Navbar = () => {
 					<NavLink to='/collection' className='hover:text-rose-600 transition-all'>COLLECTION</NavLink>
 					<NavLink to='/about' className='hover:text-rose-600 transition-all'>ABOUT</NavLink>
 					<NavLink to='/contact' className='hover:text-rose-600 transition-all'>CONTACT</NavLink>
-					{user && (
-						<nav className="flex space-x-6">
-							<NavLink
-								to='/order2'
-								className='hover:text-rose-600 transition-all uppercase text-lg'>
-								Order
-							</NavLink>
-							<NavLink to='/find-a-store' className='hover:text-rose-600 transition-all uppercase text-lg'>	Find a store </NavLink>
-						</nav>
-					)}
+					{user &&
+						<NavLink to='/order2' className='hover:text-rose-600 transition-all uppercase text-lg'>Order</NavLink>
+					}
+					<NavLink to='/find-a-store' className='hover:text-rose-600 transition-all uppercase text-lg'>	Find a store </NavLink>
 				</ul>
 
 				{/* Icons */}
@@ -90,9 +84,7 @@ const Navbar = () => {
 					{user &&
 						<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/order2' onClick={() => { setVisible(false) }}>ORDERS</NavLink>
 					}
-					{user &&
-						<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg uppercase' to='/find-a-store' onClick={() => { setVisible(false) }}>Find our store</NavLink>
-					}
+					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg uppercase' to='/find-a-store' onClick={() => { setVisible(false) }}>Find our store</NavLink>
 				</div>
 			</div>
 		</>
