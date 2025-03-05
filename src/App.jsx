@@ -1,4 +1,3 @@
-import React from 'react';
 import { ToastContainer } from 'react-toastify';
 // import { Navbar } from './Components/Navbar';
 import SearchBar from './Components/SearchBar';
@@ -19,6 +18,7 @@ import Product from './pages/Product';
 import { Analytics } from "@vercel/analytics/react"
 import Order from './pages/Order';
 import Order2 from './pages/Order2';
+import Map from './pages/Map';
 
 const App = () => {
   const { user } = useUser();
@@ -30,7 +30,8 @@ const App = () => {
       <Navbar />
       <SearchBar />
       <Routes>
-        <Route path='/' element={<Home />} />  
+        <Route path='/' element={<Home />} /> 
+        <Route path='/find-a-store' element={<Map />} />
         <Route path='/order' element={<Order />} />
         <Route path='/order2' element={<Order2 />} />
         <Route path='/collection' element={<Collection />} />

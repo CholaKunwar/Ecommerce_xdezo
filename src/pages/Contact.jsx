@@ -1,11 +1,11 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
 const Contact = () => {
 	return (
 		<div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] py-10'>
 			<div className='text-center'>
 				<h1 className='text-gray-700 text-4xl font-bold'>CONTACT <span className='text-black'>US</span></h1>
-				<p className='text-gray-500 mt-2 text-lg'>We'd love to hear from you!</p>
+				<p className='text-gray-500 mt-2 text-lg'>We love to hear from you!</p>
 			</div>
 
 			<div className='my-10 flex flex-col md:flex-row gap-10 items-center'>
@@ -24,9 +24,11 @@ const Contact = () => {
 					</p>
 					<h2 className='font-semibold text-2xl text-gray-700'>Careers at Forever</h2>
 					<p className='text-gray-600 text-lg'>Learn more about us and our job openings.</p>
-					<button className='border border-black px-8 py-3 text-lg font-medium rounded-lg hover:bg-black hover:text-white transition-all duration-500'>
-						Explore Jobs
-					</button>
+					<Link to={'/find-a-store'}>
+						<button className='border border-black px-8 py-3 text-lg font-medium rounded-lg hover:bg-black hover:text-white transition-all duration-500'>
+							Contact Us
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>

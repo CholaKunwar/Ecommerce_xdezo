@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { RxDropdownMenu } from "react-icons/rx";
 import { FaCartPlus } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { IoMdSearch } from "react-icons/io";
 import Logo from '../assets/logo.png';
 import { ShopContext } from '../Context/ShopContext';
-import { useAuth, useClerk, UserButton, useUser } from '@clerk/clerk-react';
-import { toast } from 'react-toastify';
-
+import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 
 const Navbar = () => {
 	const [visible, setVisible] = useState(false);
-	const { showSearch, setShowSearch, getCartCount } = useContext(ShopContext);
+	const { setShowSearch, getCartCount } = useContext(ShopContext);
 	const { openSignIn } = useClerk();
 	const { user } = useUser();
 	// const { signOut } = useClerk();
@@ -45,9 +43,16 @@ const Navbar = () => {
 					<NavLink to='/collection' className='hover:text-rose-600 transition-all'>COLLECTION</NavLink>
 					<NavLink to='/about' className='hover:text-rose-600 transition-all'>ABOUT</NavLink>
 					<NavLink to='/contact' className='hover:text-rose-600 transition-all'>CONTACT</NavLink>
-					{user &&
-						<NavLink to='/order2' className='hover:text-rose-600 transition-all uppercase'>Order</NavLink>
-					}
+					{user && (
+						<nav className="flex space-x-6">
+							<NavLink
+								to='/order2'
+								className='hover:text-rose-600 transition-all uppercase text-lg'>
+								Order
+							</NavLink>
+							<NavLink to='/find-a-store' className='hover:text-rose-600 transition-all uppercase text-lg'>	Find a store </NavLink>
+						</nav>
+					)}
 				</ul>
 
 				{/* Icons */}
@@ -84,6 +89,9 @@ const Navbar = () => {
 					<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/contact' onClick={() => { setVisible(false) }}>CONTACT</NavLink>
 					{user &&
 						<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg' to='/order2' onClick={() => { setVisible(false) }}>ORDERS</NavLink>
+					}
+					{user &&
+						<NavLink className='py-4 pl-6 border-b border-gray-200 hover:bg-rose-50 text-lg uppercase' to='/find-a-store' onClick={() => { setVisible(false) }}>Find our store</NavLink>
 					}
 				</div>
 			</div>

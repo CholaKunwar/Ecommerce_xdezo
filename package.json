@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.22.10",
+    "@emailjs/browser": "^4.4.1",
     "@react-icons/all-files": "^4.1.0",
+    "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.0.0",
     "@vercel/analytics": "^1.4.1",
     "axios": "^1.7.9",
@@ -19,6 +21,7 @@
     "ecommerce_xdezo": "file:",
     "framer-motion": "^12.0.8",
     "jspdf": "^3.0.0",
+    "lucide-react": "^0.477.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
