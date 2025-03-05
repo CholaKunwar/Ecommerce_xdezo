@@ -17,84 +17,98 @@ const Order2 = () => {
 		setOrders(updatedOrders);
 	};
 
-	const handleDownloadPDF = (order) => {
+	const handleDownloadPDF = (receipt) => {
 		const doc = new jsPDF();
 
+		// Add background color
+		doc.setFillColor(245, 245, 245); // bg-gray-50
+		doc.rect(0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height, 'F');
+
 		// Add logo
-		doc.addImage(logo, 'PNG', 90, 8, 30, 25);
+		doc.addImage(logo, 'PNG', 85, 10, 40, 30);
 
-		// Title of the document
-		doc.setFontSize(22);
-		doc.setTextColor(40, 40, 40);
-		doc.text('Order Receipt', 105, 40, { align: 'center' });
+		// Title
+		doc.setFontSize(24);
+		doc.setTextColor(0, 102, 204);
+		doc.text('Receipt', 105, 50, { align: 'center' });
 
-		// Add separator line
+		// Separator Line
 		doc.setDrawColor(150, 150, 150);
-		doc.line(10, 45, 200, 45);
+		doc.line(20, 55, 190, 55);
 
-		// Set font and size for details
-		doc.setFontSize(12);
-		doc.setFont('helvetica', 'normal');
-
-		const startX = 20, startY = 55;
+		const startX = 20, startY = 65;
 		const lineSpacing = 10;
 
-		// Order ID and Date (Header Section)
-		doc.setFontSize(14);
-		doc.text(`Order ID:`, startX, startY);
+		// Transaction Details
 		doc.setFontSize(12);
-		doc.text(`${order.id}`, startX + 50, startY);
+		doc.setTextColor(40, 40, 40);
+		doc.text(`Transaction No:`, startX, startY);
+		doc.setFontSize(12);
+		doc.setTextColor(0, 0, 0);
+		doc.text(`${receipt.id}`, startX + 50, startY);
 
-		doc.setFontSize(14);
-		doc.text(`Date:`, startX, startY + lineSpacing);
 		doc.setFontSize(12);
-		doc.text(new Date(order.date).toLocaleString(), startX + 50, startY + lineSpacing);
+		doc.setTextColor(40, 40, 40);
+		doc.text(`Transaction Date:`, startX, startY + lineSpacing);
+		doc.setFontSize(12);
+		doc.setTextColor(0, 0, 0);
+		doc.text(`${new Date(receipt.date).toLocaleString()}`, startX + 50, startY + lineSpacing);
 
 		// Separator Line
 		doc.setDrawColor(150, 150, 150);
-		doc.line(10, startY + 3 * lineSpacing, 200, startY + 3 * lineSpacing);
+		doc.line(20, startY + 3 * lineSpacing, 190, startY + 3 * lineSpacing);
 
-		// Total Amount Section
+		// Customer Information
 		doc.setFontSize(14);
-		doc.text('Total Amount:', startX, startY + 4 * lineSpacing);
+		doc.setTextColor(40, 40, 40);
+		doc.text('Customer Information:', startX, startY + 5 * lineSpacing);
 		doc.setFontSize(12);
-		doc.text(`Rs. ${order.totalAmount}`, startX + 50, startY + 4 * lineSpacing);
+		doc.setTextColor(0, 0, 0);
+		doc.text(`Name: ${receipt.deliveryInfo.firstName} ${receipt.deliveryInfo.lastName}`, startX, startY + 6 * lineSpacing);
+		doc.text(`Phone: ${receipt.deliveryInfo.phone}`, startX, startY + 7 * lineSpacing);
+		doc.text(`Email: ${receipt.deliveryInfo.email}`, startX, startY + 8 * lineSpacing);
+		doc.text(`Address: ${receipt.deliveryInfo.street}, ${receipt.deliveryInfo.city}, ${receipt.deliveryInfo.state}, ${receipt.deliveryInfo.zipcode}, ${receipt.deliveryInfo.country}`, startX, startY + 9 * lineSpacing);
 
-		// Customer Information Section
+		// Ordered Items Table
 		doc.setFontSize(14);
-		doc.text('Customer Information:', startX, startY + 6 * lineSpacing);
+		doc.setTextColor(40, 40, 40);
+		doc.text('Ordered Items:', startX, startY + 11 * lineSpacing);
+		doc.setDrawColor(0, 0, 0);
+		doc.line(20, startY + 12 * lineSpacing, 190, startY + 12 * lineSpacing);
+
 		doc.setFontSize(12);
-		doc.text(`Name: ${order.deliveryInfo.firstName} ${order.deliveryInfo.lastName}`, startX, startY + 7 * lineSpacing);
-		doc.text(`Email: ${order.deliveryInfo.email}`, startX, startY + 8 * lineSpacing);
-		doc.text(`Phone: ${order.deliveryInfo.phone}`, startX, startY + 9 * lineSpacing);
-		doc.text(`Address: ${order.deliveryInfo.street}, ${order.deliveryInfo.city}, ${order.deliveryInfo.zipcode}`, startX, startY + 10 * lineSpacing);
+		doc.text('SN', startX, startY + 14 * lineSpacing);
+		doc.text('Item', startX + 20, startY + 14 * lineSpacing);
+		doc.text('Size', startX + 100, startY + 14 * lineSpacing);
+		doc.text('Qty', startX + 130, startY + 14 * lineSpacing);
+		doc.text('Amount', startX + 160, startY + 14 * lineSpacing);
+		doc.line(20, startY + 15 * lineSpacing, 190, startY + 15 * lineSpacing);
 
-		// Payment Method Section
-		doc.setFontSize(14);
-		doc.text('Payment Method:', startX, startY + 12 * lineSpacing);
-		doc.setFontSize(12);
-		doc.text(`${order.paymentMethod}`, startX + 50, startY + 12 * lineSpacing);
-
-		// Separator Line
-		doc.setDrawColor(150, 150, 150);
-		doc.line(10, startY + 14 * lineSpacing, 200, startY + 14 * lineSpacing);
-
-		// Product Items Section
-		doc.setFontSize(14);
-		doc.text('Ordered Items:', startX, startY + 15 * lineSpacing);
-		order.items.forEach((item, idx) => {
-			doc.setFontSize(12);
-			doc.text(`${item.name} (Size: ${item.size}) - Quantity: ${item.quantity}`, startX, startY + (16+ idx) * lineSpacing);
+		receipt.items.forEach((item, index) => {
+			doc.text(`${index + 1}`, startX, startY + (16 + index) * lineSpacing);
+			doc.text(item.name, startX + 20, startY + (16 + index) * lineSpacing);
+			doc.text(item.size, startX + 100, startY + (16 + index) * lineSpacing);
+			doc.text(`${item.quantity}`, startX + 130, startY + (16 + index) * lineSpacing);
 		});
 
-		// Footer
-		doc.setFontSize(12);
+		// Total Amount
+		doc.line(20, startY + (18 + receipt.items.length) * lineSpacing, 190, startY + (18 + receipt.items.length) * lineSpacing);
+		doc.setFontSize(16);
+		doc.setTextColor(0, 102, 204);
+		doc.text(`Total Amount: Rs. ${receipt.totalAmount}/-`, startX + 90, startY + (20 + receipt.items.length) * lineSpacing);
+
+		// Footer Note
+		doc.setFontSize(10);
 		doc.setTextColor(60, 60, 60);
-		doc.text('Thank you for shopping with us!', 105, 260, { align: 'center' });
+		doc.text("Note: Thank you for your purchase!", startX, startY + (23 + receipt.items.length) * lineSpacing);
+		doc.text("For any inquiries, contact our support team.", startX, startY + (24 + receipt.items.length) * lineSpacing);
 
 		// Save the PDF
-		doc.save(`receipt_${order.id}.pdf`);
+		doc.save(`receipt_${receipt.id}.pdf`);
 	};
+
+
+
 
 
 
