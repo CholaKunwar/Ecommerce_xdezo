@@ -3,8 +3,10 @@ import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
+import { useUser } from '@clerk/clerk-react';
 
 const Map = () => {
+	const { user } = useUser();
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -14,23 +16,27 @@ const Map = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const serviceID = "service_z4ksltu"; // Your EmailJS Service ID
-		const templateID = "template_24fi8xm"; // Your EmailJS Template ID
-		const publicKey = "ydbzNCbAunOenUHLP"; // Your EmailJS Public Key
+		if (user) {
+			const serviceID = "service_z4ksltu"; // Your EmailJS Service ID
+			const templateID = "template_24fi8xm"; // Your EmailJS Template ID
+			const publicKey = "ydbzNCbAunOenUHLP"; // Your EmailJS Public Key
 
-		const emailParams = {
-			from_name: formData.name,
-			from_email: formData.email,
-			message: formData.message,
-		};
+			const emailParams = {
+				from_name: formData.name,
+				from_email: formData.email,
+				message: formData.message,
+			};
 
-		try {
-			await emailjs.send(serviceID, templateID, emailParams, { publicKey });
-			toast.success("Message sent successfully");
-			setFormData({ name: "", email: "", message: "" });
-		} catch (error) {
-			console.error("Error sending message:", error);
-			toast.error("Failed to send message. Please try again.");
+			try {
+				await emailjs.send(serviceID, templateID, emailParams, { publicKey });
+				toast.success("Message sent successfully");
+				setFormData({ name: "", email: "", message: "" });
+			} catch (error) {
+				console.error("Error sending message:", error);
+				toast.error("Failed to send message. Please try again.");
+			}
+		} else {
+			toast.error('please login before sending message');
 		}
 	};
 
