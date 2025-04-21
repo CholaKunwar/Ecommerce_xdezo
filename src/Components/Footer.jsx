@@ -17,7 +17,9 @@ const Footer = () => {
 					<div>
 						<h2 className="mb-3 text-lg font-semibold">Info</h2>
 						<ul className="space-y-2">
-							<li><a href="#" className="hover:underline">FAQ</a></li>
+							<Link to={'/faq'}>
+								<li className="hover:underline">FAQ</li>
+							</Link>
 						</ul>
 					</div>
 					<div>
@@ -31,8 +33,9 @@ const Footer = () => {
 					<div>
 						<h2 className="mb-3 text-lg font-semibold">Policies</h2>
 						<ul className="space-y-2">
-							<li><a href="#" className="hover:underline">Privacy Policy</a></li>
-							<li><a href="#" className="hover:underline">Return & Exchange</a></li>
+							<Link to="/privacy">
+								<li><a href="#" className="hover:underline">Privacy Policy</a></li>
+							</Link>
 						</ul>
 					</div>
 				</div>

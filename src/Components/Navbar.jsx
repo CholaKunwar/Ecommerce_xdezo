@@ -33,7 +33,7 @@ const Navbar = () => {
 				<Link to='/'>
 					<div className='flex items-center gap-2'>
 						<img src={Logo} alt="Logo" className='h-8 w-8 md:w-14 md:h-12 object-cover rounded-xl transform hover:scale-110 transition-all' />
-						<h1 className='text-2xl md:text-4xl font-bold text-gray-900'>Ch<span className='text-rose-600'>ola</span></h1>
+						<h1 className='text-2xl md:text-4xl font-bold text-gray-900'>Style<span className='text-rose-600'>Nest</span></h1>
 					</div>
 				</Link>
 

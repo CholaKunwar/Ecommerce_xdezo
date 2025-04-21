@@ -19,6 +19,8 @@ import { Analytics } from "@vercel/analytics/react"
 import Order from './pages/Order';
 import Order2 from './pages/Order2';
 import Map from './pages/Map';
+import CholaFAQ from './pages/Faq';
+import PrivacyPolicy from './pages/Privacy';
 
 const App = () => {
   const { user } = useUser();
@@ -41,6 +43,8 @@ const App = () => {
           <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
         {user && <Route path='place-order' element={<PlaceOrder />} />}
+        <Route path='/faq' element={<CholaFAQ />} />
+        <Route path='/privacy' element={<PrivacyPolicy/>} />
         <Route path='/paymentsuccess' element={<PaymentSuccess />} />
         <Route path='/paymentfailure' element={<PaymentFailure />} />
       </Routes>
