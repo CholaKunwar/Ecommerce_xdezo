@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import clothStoreVideo from '../assets/clothStore.mp4'; // Import the video fil
 
 const Hero = () => {
 	return (
@@ -24,12 +25,23 @@ const Hero = () => {
 				</div>
 
 				{/* Hero Right Side */}
-				<div className="w-full sm:w-1/2 xs:h-[450px] overflow-hidden">
+				{/* <div className="w-full sm:w-1/2 xs:h-[450px] overflow-hidden">
 					<img
 						className="xs:w-[450px] xs:h-[450px] lg:w-full lg:h-full object-cover transform hover:scale-105 transition-transform duration-500"
 						src='https://img.freepik.com/free-photo/excited-funny-woman-shopaholic-holding-hangers-with-summer-clothes-try-demonstrating-smartphone_273609-741.jpg'
 						alt="Latest Arrivals"
 					/>
+				</div> */}
+				<div className="w-full h-[420px] sm:w-1/2 xs:h-[450px] overflow-hidden">
+					<video
+						className="xs:w-[450px] xs:h-[450px] lg:w-full lg:h-full object-cover transform hover:scale-105 transition-transform duration-500"
+						autoPlay
+						muted
+						loop
+					>
+						<source src={clothStoreVideo} type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
 				</div>
 			</div>
 		</div>

@@ -38,15 +38,19 @@ const Navbar = () => {
 				</Link>
 
 				{/* Nav Links */}
-				<ul className='hidden sm:flex gap-8 text-lg font-medium text-gray-800'>
-					<NavLink to='/' className='hover:text-rose-600 transition-all'>HOME</NavLink>
-					<NavLink to='/collection' className='hover:text-rose-600 transition-all'>COLLECTION</NavLink>
-					<NavLink to='/about' className='hover:text-rose-600 transition-all'>ABOUT</NavLink>
-					<NavLink to='/contact' className='hover:text-rose-600 transition-all'>CONTACT</NavLink>
+				<ul className='hidden lg:flex gap-8 text-lg font-medium text-gray-800'>
+					<NavLink to='/' className={({ isActive }) => `transition-all hover:text-rose-600 ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>HOME</NavLink>
+				
+					<NavLink to='/collection' className={({ isActive }) => `transition-all hover:text-rose-600 ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>COLLECTION</NavLink>
+
+					<NavLink to='/about' className={({ isActive }) => `transition-all hover:text-rose-600 ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>ABOUT</NavLink>
+
+					<NavLink to='/contact' className={({ isActive }) => `transition-all hover:text-rose-600 ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>CONTACT</NavLink>
+
 					{user &&
-						<NavLink to='/order2' className='hover:text-rose-600 transition-all uppercase text-lg'>Order</NavLink>
+						<NavLink to='/order2' className={({ isActive }) => `transition-all hover:text-rose-600 ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>ORDER</NavLink>
 					}
-					<NavLink to='/find-a-store' className='hover:text-rose-600 transition-all uppercase text-lg'>	Find a store </NavLink>
+					<NavLink to='/find-a-store' className={({ isActive }) => `transition-all hover:text-rose-600 uppercase ${isActive ? 'text-rose-600 underline underline-offset-6' : ''}`}>Find our store</NavLink>
 				</ul>
 
 				{/* Icons */}
@@ -66,7 +70,7 @@ const Navbar = () => {
 							</p>
 						</Link>
 					}
-					<RxDropdownMenu onClick={() => setVisible(true)} className='w-7 h-7 cursor-pointer sm:hidden hover:text-rose-600' />
+					<RxDropdownMenu onClick={() => setVisible(true)} className='w-7 h-7 cursor-pointer lg:hidden hover:text-rose-600' />
 				</div>
 			</div>
 

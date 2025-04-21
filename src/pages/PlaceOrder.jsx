@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../Context/ShopContext';
 import CartTotal from '../Components/CartTotal';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,24 +7,24 @@ import { Link } from 'react-router-dom';
 
 const PlaceOrder = () => {
 	const [method, setMethod] = useState('cod');
-	const { products, navigate, getCartAmount, cartItems, delivery_fee } = useContext(ShopContext);
+	const { products, getCartAmount, cartItems, delivery_fee } = useContext(ShopContext);
 	const [cartData, setCartData] = useState([]);
-	
-		useEffect(() => {
-			const tempData = [];
-			for (const items in cartItems) {
-				for (const item in cartItems[items]) {
-					if (cartItems[items][item] > 0) {
-						tempData.push({
-							_id: items,
-							size: item,
-							quantity: cartItems[items][item],
-						});
-					}
+
+	useEffect(() => {
+		const tempData = [];
+		for (const items in cartItems) {
+			for (const item in cartItems[items]) {
+				if (cartItems[items][item] > 0) {
+					tempData.push({
+						_id: items,
+						size: item,
+						quantity: cartItems[items][item],
+					});
 				}
 			}
-			setCartData(tempData);
-		}, [cartItems]);	
+		}
+		setCartData(tempData);
+	}, [cartItems]);
 
 	const proceedToCheckout = () => {
 		// Retrieve existing purchase history from localStorage or initialize an empty array
@@ -57,7 +57,7 @@ const PlaceOrder = () => {
 		localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
 	};
 
-	
+
 
 	let grandTotal = getCartAmount() + delivery_fee;
 	let [formData, setFormData] = useState({
@@ -143,11 +143,11 @@ const PlaceOrder = () => {
 						</div>
 						<input className='border border-gray-300 rounded-lg py-2 px-4 w-full mt-4' type="email" placeholder='Email' value={deliveryInfo.email} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, email: e.target.value })} required />
 
-						<input className='border border-gray-300 rounded-lg py-2 px-4 w-full mt-4' type="text" placeholder='Street' value={deliveryInfo.street} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, street: e.target.value })} required />
+						<input className='border border-gray-300 rounded-lg py-2 px-4 w-full mt-4' type="text" placeholder='Region/District/City' value={deliveryInfo.street} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, street: e.target.value })} required />
 
 						<div className="flex gap-4 mt-4">
-							<input className='border border-gray-300 rounded-lg py-2 px-4 w-full' type="text" placeholder='City' value={deliveryInfo.city} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, city: e.target.value })} required />
-							<input className='border border-gray-300 rounded-lg py-2 px-4 w-full' type="text" placeholder='State' value={deliveryInfo.state} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, state: e.target.value })} required />
+							<input className='border border-gray-300 rounded-lg py-2 px-4 w-full' type="text" placeholder='House no/building/street/area' value={deliveryInfo.city} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, city: e.target.value })} required />
+							<input className='border border-gray-300 rounded-lg py-2 px-4 w-full' type="text" placeholder='Province' value={deliveryInfo.state} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, state: e.target.value })} required />
 						</div>
 
 						<div className="flex gap-4 mt-4">
