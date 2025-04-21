@@ -32,7 +32,7 @@ const Hero = () => {
 						alt="Latest Arrivals"
 					/>
 				</div> */}
-				<div className="w-full h-[420px] sm:w-1/2 xs:h-[450px] overflow-hidden">
+				<div className="w-full  sm:w-1/2 sm:h-[450px] overflow-hidden">
 					<video
 						className="xs:w-[450px] xs:h-[450px] lg:w-full lg:h-full object-cover transform hover:scale-105 transition-transform duration-500"
 						autoPlay
