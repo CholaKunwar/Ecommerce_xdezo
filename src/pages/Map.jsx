@@ -44,7 +44,7 @@ const Map = () => {
 	// 	"https://www.google.com/maps/place/St.+Anne%E2%80%99s+Catholic+Church/@28.2233871,83.9817919,17z/";
 
 	const googleMapsUrl =
-		"https://www.google.com/maps/place/St.+Anne%E2%80%99s+Catholic+Church/@28.2232328,83.9840124,19.82z/data=!4m6!3m5!1s0x399594502e1c3263:0xa8a4377f075f281b!8m2!3d28.2233871!4d83.9843668!16s%2Fg%2F11c20c680r?entry=ttu&g_ep=EgoyMDI1MDMwMi4wIKXMDSoASAFQAw%3D%3D";
+		"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d306.76466802514966!2d83.98393505031744!3d28.222855004963996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995958fdcbc3d59%3A0xc29a1ebac783c3d4!2sSuper%20Electronics!5e0!3m2!1sen!2snp!4v1745221601663!5m2!1sen!2snp";
 
 	return (
 		<motion.div
@@ -65,7 +65,7 @@ const Map = () => {
 					whileHover={{ scale: 1.02 }}
 					transition={{ type: "spring", stiffness: 300 }}
 				>
-					<iframe
+					{/* <iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.4707839599364!2d83.98179187527333!3d28.22338707589064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399594502e1c3263%3A0xa8a4377f075f281b!2sSt.%20Anne%E2%80%99s%20Catholic%20Church!5e0!3m2!1sen!2snp!4v1741152809363!5m2!1sen!2snp"
 						width="100%"
 						height="400"
@@ -73,7 +73,10 @@ const Map = () => {
 						allowFullScreen=""
 						loading="lazy"
 						referrerPolicy="no-referrer-when-downgrade"
-					></iframe>
+					></iframe> */}
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d306.76466802514966!2d83.98393505031744!3d28.222855004963996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995958fdcbc3d59%3A0xc29a1ebac783c3d4!2sSuper%20Electronics!5e0!3m2!1sen!2snp!4v1745221601663!5m2!1sen!2snp" width="100%" height="400" className="rounded-xl shadow-lg border-none" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+
 
 					<div className="mt-8 flex justify-center">
 						<button
