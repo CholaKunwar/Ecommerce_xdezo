@@ -93,9 +93,9 @@ const Order2 = () => {
 
 		// Total Amount
 		doc.line(20, startY + (18 + receipt.items.length) * lineSpacing, 190, startY + (18 + receipt.items.length) * lineSpacing);
-		doc.setFontSize(16);
-		doc.setTextColor(0, 102, 204);
-		doc.text(`Total Amount: Rs. ${receipt.totalAmount}/-`, startX + 90, startY + (20 + receipt.items.length) * lineSpacing);
+		doc.setFontSize(14);
+		// doc.setTextColor(0, 102, 204);
+		doc.text(`Total Amount: Rs. ${receipt.totalAmount}/-`, startX + 122, startY + (19 + receipt.items.length) * lineSpacing);
 
 		// Footer Note
 		doc.setFontSize(10);
