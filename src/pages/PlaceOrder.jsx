@@ -132,7 +132,7 @@ const PlaceOrder = () => {
 			<div className='flex flex-col sm:flex-row justify-evenly gap-4 pt-5 sm:pt-14 min-h-[80vh]'>
 
 				{/* Left Side - Delivery Info */}
-				<div className='my-3 gap-6 p-8 bg-white rounded-md shadow-sm'>
+				<div className='my-3 gap-6 p-8 bg-[#f9f9f9] rounded-md shadow-sm'>
 					<h1 className='text-2xl font-semibold text-gray-800'>Delivery Information</h1>
 
 					{/* Delivery Form Fields */}
@@ -167,16 +167,17 @@ const PlaceOrder = () => {
 
 					<CartTotal />
 
-					<h1 className='text-2xl font-semibold text-gray-800 mt-10'>Payment Method</h1>
+					{/* <h1 className='text-2xl font-semibold text-gray-800 mt-10'>Payment Method</h1> */}
 
 					{/* Payment Method Selection */}
-					<div className="flex gap-4 mt-8">
-						<div onClick={() => setMethod('esewa')} className={`flex items-center gap-2 py-4 px-[53px] rounded-md border cursor-pointer transition-all ease-in-out duration-300 ${method === 'esewa' ? 'bg-blue-100 border-blue-500' : 'border-gray-300 hover:bg-blue-100'}`}>
-							<img src="https://hamronepalcoop.com.np/wp-content/uploads/2022/03/featured.png" alt="esewa" className='h-8 w-30' />
-						</div>
+					<h2 className="text-2xl font-bold text-gray-800 mb-6 mt-10">Payment Method</h2>
 
-						<div onClick={() => setMethod('cod')} className={`flex items-center gap-2 py-4 px-[53px] rounded-md border cursor-pointer transition-all ease-in-out duration-300 ${method === 'cod' ? 'bg-blue-100 border-blue-500' : 'border-gray-300 hover:bg-blue-100'}`}>
-							<p className='text-gray-600 text-lg'>Cash on Delivery</p>
+					<div className="flex gap-4">
+						<div onClick={() => setMethod('esewa')} className={`flex items-center justify-center w-1/2 border-2 rounded-lg p-4 cursor-pointer transition-all ${method === 'esewa' ? 'border-[#5e3b23] bg-[#efe3d1]' : 'border-gray-300 hover:bg-[#f2e7db]'}`}>
+							<img src="https://hamronepalcoop.com.np/wp-content/uploads/2022/03/featured.png" alt="eSewa" className="h-8" />
+						</div>
+						<div onClick={() => setMethod('cod')} className={`flex items-center justify-center w-1/2 border-2 rounded-lg p-4 cursor-pointer transition-all ${method === 'cod' ? 'border-[#5e3b23] bg-[#efe3d1]' : 'border-gray-300 hover:bg-[#f2e7db]'}`}>
+							<span className="text-[#5e3b23] font-medium">Cash on Delivery</span>
 						</div>
 					</div>
 
@@ -194,11 +195,11 @@ const PlaceOrder = () => {
 							<input type="hidden" id="failure_url" name="failure_url" value={formData.failure_url} required />
 							<input type="hidden" id="signed_field_names" name="signed_field_names" value={formData.signed_field_names} required />
 							<input type="hidden" id="signature" name="signature" value={formData.signature} required />
-							<button type="submit" className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md transition-all ease-in-out duration-300">Proceed to Checkout</button>
+							<button type="submit" className="w-full mt-6 bg-[#5e3b23] hover:bg-[#4b2f1e] text-white font-medium py-3 rounded-lg transition-all">Proceed to Checkout</button>
 						</form>
 						:
 						<Link to={'/paymentsuccess'}>
-							<button type="submit" onClick={handleProceedToCheckout} className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md transition-all ease-in-out duration-300">Proceed to Checkout</button>
+							<button onClick={handleProceedToCheckout} className="w-full mt-6 bg-[#5e3b23] hover:bg-[#4b2f1e] text-white font-medium py-3 rounded-lg transition-all">Proceed to Checkout</button>
 						</Link>
 					}
 				</div>

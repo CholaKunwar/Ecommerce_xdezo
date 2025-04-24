@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import{ useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { jsPDF } from 'jspdf';
 import logo from '../assets/logo.png'
 
 const Order = () => {
-	const { products, currency, cartItems, navigate } = useContext(ShopContext);
+	const { products, currency, cartItems } = useContext(ShopContext);
 	const [cartData, setCartData] = useState([]);
 
 	// Retrieve product details from localStorage

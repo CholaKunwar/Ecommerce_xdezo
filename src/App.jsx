@@ -25,7 +25,7 @@ import PrivacyPolicy from './pages/Privacy';
 const App = () => {
   const { user } = useUser();
   return (
-    <div className='bg-gray-50 min-h-screen'>
+    <div className='bg-[#faf8f7] min-h-screen'>
       {/* Include Vercel Analytics component */}
       <Analytics />
       <ToastContainer />

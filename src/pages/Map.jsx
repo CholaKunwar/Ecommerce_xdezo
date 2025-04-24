@@ -3,7 +3,7 @@ import { MapPin } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
-import { useUser } from '@clerk/clerk-react';
+import { useUser } from "@clerk/clerk-react";
 
 const Map = () => {
 	const { user } = useUser();
@@ -17,9 +17,9 @@ const Map = () => {
 		e.preventDefault();
 
 		if (user) {
-			const serviceID = "service_z4ksltu"; // Your EmailJS Service ID
-			const templateID = "template_24fi8xm"; // Your EmailJS Template ID
-			const publicKey = "ydbzNCbAunOenUHLP"; // Your EmailJS Public Key
+			const serviceID = "service_z4ksltu";
+			const templateID = "template_24fi8xm";
+			const publicKey = "ydbzNCbAunOenUHLP";
 
 			const emailParams = {
 				from_name: formData.name,
@@ -36,51 +36,44 @@ const Map = () => {
 				toast.error("Failed to send message. Please try again.");
 			}
 		} else {
-			toast.error('please login before sending message');
+			toast.error("Please login before sending message");
 		}
 	};
-
-	// const googleMapsUrl =
-	// 	"https://www.google.com/maps/place/St.+Anne%E2%80%99s+Catholic+Church/@28.2233871,83.9817919,17z/";
 
 	const googleMapsUrl =
 		"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d306.76466802514966!2d83.98393505031744!3d28.222855004963996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995958fdcbc3d59%3A0xc29a1ebac783c3d4!2sSuper%20Electronics!5e0!3m2!1sen!2snp!4v1745221601663!5m2!1sen!2snp";
 
 	return (
 		<motion.div
-			className="flex flex-col items-center justify-center min-h-screen text-gray-900 py-14 px-4 lg:p-18"
+			className="flex flex-col items-center justify-center min-h-screen text-[#3B2F2F] py-14 px-4 lg:p-18"
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
 		>
-			<h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 p-4 text-center mb-8 transform transition-all hover:scale-105">
+			<h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#5C4033] via-[#A9746E] to-[#F4A261] p-4 text-center mb-10 transform transition-all hover:scale-105">
 				Find Our Location
 			</h1>
 
-
-			<div className="flex flex-col lg:flex-row gap-12 py-10 w-full max-w-7xl">
+			<div className="flex flex-col lg:flex-row gap-12 lg:py-10 w-full max-w-7xl">
 				{/* Google Map Section */}
 				<motion.div
-					className="w-full lg:w-1/2 p-6 rounded-2xl shadow-2xl"
+					className="w-full lg:w-1/2 p-4 lg:p-6 bg-[#f9f9f9] rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
 					whileHover={{ scale: 1.02 }}
 					transition={{ type: "spring", stiffness: 300 }}
 				>
-					{/* <iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.4707839599364!2d83.98179187527333!3d28.22338707589064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399594502e1c3263%3A0xa8a4377f075f281b!2sSt.%20Anne%E2%80%99s%20Catholic%20Church!5e0!3m2!1sen!2snp!4v1741152809363!5m2!1sen!2snp"
+					<iframe
+						src={googleMapsUrl}
 						width="100%"
 						height="400"
-						className="rounded-xl shadow-lg border-none"
+						className="rounded-xl shadow-md border-none"
 						allowFullScreen=""
 						loading="lazy"
 						referrerPolicy="no-referrer-when-downgrade"
-					></iframe> */}
+					></iframe>
 
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d306.76466802514966!2d83.98393505031744!3d28.222855004963996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995958fdcbc3d59%3A0xc29a1ebac783c3d4!2sSuper%20Electronics!5e0!3m2!1sen!2snp!4v1745221601663!5m2!1sen!2snp" width="100%" height="400" className="rounded-xl shadow-lg border-none" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-
-
-					<div className="mt-8 flex justify-center">
+					<div className="mt-6 flex justify-center">
 						<button
-							className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all transform hover:scale-105"
+							className="bg-[#2A9D8F] hover:bg-[#21867A] text-white px-8 py-3 rounded-full shadow-md transition-all transform hover:scale-105 flex items-center gap-2"
 							onClick={() => window.open(googleMapsUrl, "_blank")}
 						>
 							<MapPin size={20} />
@@ -91,19 +84,16 @@ const Map = () => {
 
 				{/* Contact Form Section */}
 				<motion.div
-					className="w-full lg:w-1/2 p-8"
+					className="w-full lg:w-1/2 p-4 lg:p-8 bg-[#f9f9f9] rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.4 }}
 				>
-					<h2 className="text-4xl font-bold text-rose-500 text-center mb-8">
+					<h2 className="text-4xl font-bold text-[#5C4033] text-center mb-8">
 						Send Us a Message
 					</h2>
 					<form className="space-y-6" onSubmit={handleSubmit}>
-						<motion.div
-							whileHover={{ scale: 1.02 }}
-							transition={{ type: "spring", stiffness: 300 }}
-						>
+						<motion.div whileHover={{ scale: 1.02 }}>
 							<input
 								type="text"
 								placeholder="Your Name"
@@ -112,14 +102,11 @@ const Map = () => {
 								onChange={(e) =>
 									setFormData({ ...formData, name: e.target.value })
 								}
-								className="w-full p-3 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 border border-gray-300 shadow-sm"
+								className="bg-[#FDF6F0] w-full p-3 rounded-3xl text-[#3B2F2F] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F4A261] border border-[#e0cfc2] shadow-sm"
 								required
 							/>
 						</motion.div>
-						<motion.div
-							whileHover={{ scale: 1.02 }}
-							transition={{ type: "spring", stiffness: 300 }}
-						>
+						<motion.div whileHover={{ scale: 1.02 }}>
 							<input
 								type="email"
 								placeholder="Your Email"
@@ -128,14 +115,11 @@ const Map = () => {
 								onChange={(e) =>
 									setFormData({ ...formData, email: e.target.value })
 								}
+								className="bg-[#FDF6F0] w-full p-3 rounded-3xl text-[#3B2F2F] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F4A261] border border-[#e0cfc2] shadow-sm"
 								required
-								className="w-full p-3 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 border border-gray-300 shadow-sm"
 							/>
 						</motion.div>
-						<motion.div
-							whileHover={{ scale: 1.02 }}
-							transition={{ type: "spring", stiffness: 300 }}
-						>
+						<motion.div whileHover={{ scale: 1.02 }}>
 							<textarea
 								placeholder="Your Message"
 								id="message"
@@ -145,16 +129,13 @@ const Map = () => {
 								}
 								required
 								rows={5}
-								className="w-full p-3 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-500 border border-gray-300 shadow-sm"
+								className="bg-[#FDF6F0] w-full p-3 rounded-3xl text-[#3B2F2F] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#F4A261] border border-[#e0cfc2] shadow-sm"
 							></textarea>
 						</motion.div>
-						<motion.div
-							whileHover={{ scale: 1.05 }}
-							transition={{ type: "spring", stiffness: 300 }}
-						>
+						<motion.div whileHover={{ scale: 1.05 }}>
 							<button
 								type="submit"
-								className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105"
+								className="w-full bg-gradient-to-r from-[#5C4033] via-[#A9746E] to-[#F4A261] hover:to-[#DA8C60] text-white px-6 py-3 rounded-full shadow-lg transition-all transform hover:scale-105"
 							>
 								Send Message
 							</button>

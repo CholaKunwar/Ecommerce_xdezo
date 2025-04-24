@@ -8,32 +8,31 @@
 	font-style: normal;
 }
 
-::-weKit-scrollbar {
+::-webkit-scrollbar {
 	display: none;
 }
 
 /* Custom Toast Theme */
 .Toastify__toast--custom {
-	background: #ffffff;
-	/* White background */
-	color: #030303;
-	/* Dark text */
+	background: #fafafa;
+	/* Light beige background */
+	color: #5e3b23;
+	/* Brown text */
 	border-radius: 8px;
 	/* Rounded corners */
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	/* Subtle shadow */
 	font-family: 'Roboto', sans-serif;
-	/* YouTube's font */
 	font-size: 14px;
-	/* YouTube's font size */
+	/* Standard font size */
 }
 
 /* Custom Success Toast */
 .Toastify__toast--success-custom1 {
-	background: #f9fafb;
-	/* White background */
-	color: #374151;
-	/* Gray text */
+	background: #fafafa;
+	/* Light beige background */
+	color: #5e3b23;
+	/* Brown text */
 	border-radius: 8px;
 	/* Rounded corners */
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -58,15 +57,34 @@
 }
 
 .Toastify__toast--success-custom1 .Toastify__progress-bar {
-	background: #10b981;
-	/* Green progress bar */
+	background: #5e3b23;
+	/* Brown progress bar */
+}
+
+/* Custom Button */
+.Toastify__toast--success-custom1 .Toastify__toast-body button {
+	background-color: #5e3b23;
+	/* Brown background */
+	color: #ffffff;
+	/* White text */
+	border-radius: 8px;
+	/* Rounded corners */
+	padding: 10px 15px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.Toastify__toast--success-custom1 .Toastify__toast-body button:hover {
+	background-color: #4a2b1c;
+	/* Darker brown on hover */
 }
 
 a.active hr {
 	display: block;
 }
 
-@media(max-width:640px) {
+@media (max-width: 640px) {
 	a.active {
 		background-color: black;
 		color: white;
