@@ -61,20 +61,35 @@ const Navbar = () => {
 			</div>
 
 			{/* Sidebar menu for small screens */}
-			<div className={`fixed top-0 right-0 h-full z-40 bg-black/50 transition-all duration-300 ease-in-out ${visible ? 'w-full' : 'w-0'}`}>
-				<div className='flex flex-col bg-white w-3/4 h-full shadow-2xl rounded-l-2xl pt-6 backdrop-blur-xl transition-all duration-300 ease-in-out'>
-					<button
-						onClick={() => setVisible(false)}
-						className="flex items-center gap-4 px-4 pb-4 text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-105">
-						<RxDropdownMenu className='h-6 rotate-180' />
-						<span className='text-lg font-semibold'>Close</span>
-					</button>
-					<NavLink className='py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/' onClick={() => { setVisible(false) }}>HOME</NavLink>
-					<NavLink className='py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/collection' onClick={() => { setVisible(false) }}>COLLECTION</NavLink>
-					<NavLink className='py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/about' onClick={() => { setVisible(false) }}>ABOUT</NavLink>
-					<NavLink className='py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/contact' onClick={() => { setVisible(false) }}>CONTACT</NavLink>
-					{user && <NavLink className='py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/order2' onClick={() => { setVisible(false) }}>ORDERS</NavLink>}
-					<NavLink className='py-4 pl-6 border-b border-gray-100 uppercase text-[#4a332d] hover:bg-[#f7efe9] hover:text-[#896b60] text-lg font-medium' to='/find-a-store' onClick={() => { setVisible(false) }}>Find our store</NavLink>
+			<div className={`fixed top-0 right-0 h-full z-40 transition-all duration-500 ease-in-out ${visible ? 'w-full' : 'w-0'} overflow-hidden`}>
+				<div className={`h-full w-3/4 max-w-sm bg-white/70 backdrop-blur-md shadow-2xl rounded-l-2xl transform ${visible ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-500 ease-in-out`}>
+					<div className='flex flex-col pt-6 h-full'>
+						<button
+							onClick={() => setVisible(false)}
+							className="flex items-center gap-4 px-4 pb-6 text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-105"
+						>
+							<RxDropdownMenu className='h-6 rotate-180' />
+							<span className='text-lg font-semibold'>Close</span>
+						</button>
+
+						{[
+							{ name: "HOME", to: "/" },
+							{ name: "COLLECTION", to: "/collection" },
+							{ name: "ABOUT", to: "/about" },
+							{ name: "CONTACT", to: "/contact" },
+							...(user ? [{ name: "ORDERS", to: "/order2" }] : []),
+							{ name: "Find our store", to: "/find-a-store", className: "uppercase" }
+						].map(({ name, to, className = "" }) => (
+							<NavLink
+								key={name}
+								className={`py-4 pl-6 border-b border-gray-100 text-[#4a332d] hover:bg-gradient-to-r hover:from-[#f3eee7] hover:to-[#efe3d1] hover:text-[#5e3b23] text-lg font-medium ${className}`}
+								to={to}
+								onClick={() => setVisible(false)}
+							>
+								{name}
+							</NavLink>
+						))}
+					</div>
 				</div>
 			</div>
 		</>
