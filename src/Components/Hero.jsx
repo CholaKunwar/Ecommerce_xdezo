@@ -29,7 +29,7 @@ const Hero = () => {
 				{/* Hero Video Side */}
 				<div className="w-full sm:w-1/2 sm:h-[450px] max-h-[450px] overflow-hidden">
 					<video
-						className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+						className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-500"
 						autoPlay
 						muted
 						loop
