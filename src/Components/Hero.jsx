@@ -35,7 +35,7 @@ const Hero = () => {
 						loop
 					>
 						<source src={clothStoreVideo} type="video/mp4" />
-						Your browser does not support the video tag.
+						Your browser does not support this video tag.
 					</video>
 				</div>
 			</div>
