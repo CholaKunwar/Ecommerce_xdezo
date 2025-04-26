@@ -29,7 +29,7 @@ const RelatedProduct = ({ category, subCategory }) => {
 						))}
 					</div>
 				</div>
-			
+			{/* sd */}
 
 
 		</div>
