@@ -1,12 +1,15 @@
-import  { useContext, useEffect, useState } from 'react';
+import React,{ useContext, useEffect, useState, Suspense } from 'react';
 import { ShopContext } from '../Context/ShopContext';
-import ProductItems from './ProductItems';
+
+// Lazy load ProductItems to reduce initial load time
+const ProductItems = React.lazy(() => import('./ProductItems'));
 
 const BestSeller = () => {
 	const { products } = useContext(ShopContext);
 	const [bestSellerProducts, setBestSellerProducts] = useState([]);
 
 	useEffect(() => {
+		// Get the best-selling products (index 11 to 16)
 		setBestSellerProducts(products.slice(11, 16));
 	}, [products]);
 
@@ -24,11 +27,13 @@ const BestSeller = () => {
 				</p>
 			</div>
 
-			{/* Rendering Products */}
+			{/* Rendering Products with Lazy Loading */}
 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 gap-y-8'>
-				{bestSellerProducts.map((item, index) => (
-					<ProductItems key={index} id={item._id} image={item.image} name={item.name} price={item.price} />
-				))}
+				<Suspense fallback={<div>Loading...</div>}>
+					{bestSellerProducts.map((item, index) => (
+						<ProductItems key={index} id={item._id} image={item.image} name={item.name} price={item.price} />
+					))}
+				</Suspense>
 			</div>
 		</div>
 	);

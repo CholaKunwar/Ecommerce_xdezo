@@ -86,6 +86,7 @@ const Order2 = () => {
 		doc.text("Note: Thank you for your purchase!", startX, startY + (23 + receipt.items.length) * lineSpacing);
 		doc.text("For any inquiries, contact our support team.", startX, startY + (24 + receipt.items.length) * lineSpacing);
 
+		
 		doc.save(`receipt_${receipt.id}.pdf`);
 	};
 

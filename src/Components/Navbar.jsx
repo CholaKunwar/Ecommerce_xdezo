@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { RxDropdownMenu } from "react-icons/rx";
-import { FaCartPlus } from "react-icons/fa";
-import { CgProfile } from "react-icons/cg";
-import { IoMdSearch } from "react-icons/io";
+import { Menu } from 'lucide-react';  // For RxDropdownMenu
+import { ShoppingCart } from 'lucide-react';  // For FaCartPlus
+import { User } from 'lucide-react';  // For CgProfile
+import { Search } from 'lucide-react';  // For IoMdSearch
 import Logo from '../assets/logo.png';
 import { ShopContext } from '../Context/ShopContext';
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
@@ -41,22 +41,22 @@ const Navbar = () => {
 
 				{/* Icons */}
 				<div className="flex items-center gap-6">
-					<IoMdSearch onClick={() => setShowSearch(prev => !prev)} className='w-7 h-7 cursor-pointer text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-110' />
+					<Search onClick={() => setShowSearch(prev => !prev)} className='w-7 h-7 cursor-pointer text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-110' />
 					<div className="group relative">
 						{user ? <UserButton /> :
 							<button onClick={() => openSignIn()} className='p-2 cursor-pointer hover:bg-gray-200 rounded-full transition-all'>
-								<CgProfile className='w-6 h-6 text-[#4a332d]' />
+								<User className='w-6 h-6 text-[#4a332d]' />
 							</button>}
 					</div>
 					{user &&
 						<Link to='/cart' className='relative'>
-							<FaCartPlus className='w-7 h-7 text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-110' />
+							<ShoppingCart className='w-7 h-7 text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-110' />
 							<p className='absolute right-[-5px] bottom-[-5px] w-5 text-center leading-5 bg-[#ff6b6b] text-white rounded-full text-xs animate-bounce shadow-md'>
 								{getCartCount()}
 							</p>
 						</Link>
 					}
-					<RxDropdownMenu onClick={() => setVisible(true)} className='w-7 h-7 cursor-pointer lg:hidden text-[#4a332d] hover:text-[#896b60]' />
+					<Menu onClick={() => setVisible(true)} className='w-7 h-7 cursor-pointer lg:hidden text-[#4a332d] hover:text-[#896b60]' />
 				</div>
 			</div>
 
@@ -68,7 +68,7 @@ const Navbar = () => {
 							onClick={() => setVisible(false)}
 							className="flex items-center gap-4 px-4 pb-6 text-[#4a332d] hover:text-[#896b60] transition-transform hover:scale-105"
 						>
-							<RxDropdownMenu className='h-6 rotate-180' />
+							<Menu className='h-6 rotate-180' />
 							<span className='text-lg font-semibold'>Close</span>
 						</button>
 
