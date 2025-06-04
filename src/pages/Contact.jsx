@@ -5,7 +5,7 @@ const Contact = () => {
 		<div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] py-14 ]'>
 			<div className='text-center'>
 				<h1 className='text-4xl font-bold text-gray-800'>
-					CONTACT <span className='text-[#ff6b6b]'>US</span>
+					CONTACT <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#5C4033] via-[#A9746E] to-[#F4A261] '>US</span>
 				</h1>
 				<p className='text-gray-500 mt-3 text-lg'>We’d love to hear from you!</p>
 			</div>
@@ -18,7 +18,7 @@ const Contact = () => {
 				/>
 
 				<div className='flex flex-col justify-center items-start gap-6 bg-gradient-to-br from-[#f1f1f1] to-[#f9f9f9] p-8 shadow-lg rounded-2xl w-full md:w-2/4 border border-gray-200'>
-					<h2 className='font-semibold text-2xl text-[#333]'>📍 Our Store</h2>
+					<h2 className='font-semibold text-2xl text-[#333]'>Our Store</h2>
 					<p className='text-gray-700 text-[17px] leading-7'>
 						455282 Lorem, Ipsum. <br />
 						Suite 8995, Pokhara, Nepal

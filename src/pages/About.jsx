@@ -1,16 +1,16 @@
-
+import OnlineShopping from '../assets/OnlineShopping.jpeg';
 const About = () => {
 	return (
 		<div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] py-14'>
 			<div className="text-center pt-6">
 				<h1 className='text-4xl font-bold text-gray-600'>
-					ABOUT <span className='text-[#ff6b6b]'>US_</span>
+					ABOUT <span className='text-[#896b60]'>US_</span>
 				</h1>
 			</div>
 
 			<div className='my-12 flex flex-col md:flex-row items-center gap-16'>
 				<img
-					src="https://d3hjf51r9j54j7.cloudfront.net/wp-content/uploads/sites/3/2022/08/online-clothes-shopping-wardrobe-phone.jpg"
+					src={OnlineShopping}
 					alt="Shopping"
 					className='w-full h-[350px] md:max-w-[500px] rounded-xl shadow-xl object-cover'
 				/>
@@ -30,7 +30,7 @@ const About = () => {
 
 			<div className="text-center text-2xl py-6">
 				<h2 className='text-gray-500 font-semibold'>
-					WHY <span className='text-[#ff6b6b]'>CHOOSE US?</span>
+					WHY <span className='bg-clip-text text-transparent bg-gradient-to-r from-[#5C4033] via-[#A9746E] to-[#F4A261] '>CHOOSE US?</span>
 				</h2>
 			</div>
 
